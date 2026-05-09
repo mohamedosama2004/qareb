@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Cairo", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: "Cairo", sans-serif;
+  
+  --color-primary: #004d40;
+  --color-primary-light: #e0f2f1;
+  --color-accent: #1de9b6;
+}
+
+body {
+  @apply bg-gray-50 text-slate-900;
+  font-family: var(--font-arabic);
+}
+
+/* Scrollbar hiding for mobile feel */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.mobile-container {
+  @apply max-w-md mx-auto min-h-screen bg-white relative flex flex-col shadow-xl;
+}
+
+.bottom-nav-item {
+  @apply flex flex-col items-center justify-center flex-1 gap-1 py-1 transition-colors;
+}
+
+.bottom-nav-item.active {
+  @apply text-primary;
+}
+
+.bottom-nav-item:not(.active) {
+  @apply text-gray-400;
+}
