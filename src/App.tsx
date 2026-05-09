@@ -66,7 +66,7 @@ function MainTabs() {
               Home: "home-outline",
               Discover: "compass-outline",
               Schedule: "calendar-outline",
-              About: "information-circle-outline",
+              About: "person-outline",
             };
             return (
               <Ionicons
@@ -96,7 +96,7 @@ function MainTabs() {
         <Tab.Screen
           name="About"
           component={AboutScreen}
-          options={{ tabBarLabel: "عن المنصة" }}
+          options={{ tabBarLabel: "الحساب" }}
         />
       </Tab.Navigator>
     </View>

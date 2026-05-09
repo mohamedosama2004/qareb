@@ -15,9 +15,6 @@ const Header = () => {
         <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
           <Ionicons name="search-outline" size={24} color="#64748b" />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
-          <Ionicons name="menu-outline" size={24} color="#64748b" />
-        </TouchableOpacity>
       </View>
     </View>
   );
