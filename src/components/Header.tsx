@@ -1,27 +1,74 @@
 import React from 'react';
-import { Search, Menu } from 'lucide-react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 const Header = () => {
   return (
-    <header className="sticky top-0 z-40 w-full bg-white/80 backdrop-blur-md px-4 py-3 flex items-center justify-between border-b border-gray-50" dir="rtl">
-      <div className="flex items-center gap-2">
-        <div className="bg-primary-light p-2 rounded-xl">
-           <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
-             <div className="w-3 h-3 border-2 border-white rounded-sm rotate-45"></div>
-           </div>
-        </div>
-        <span className="font-bold text-xl text-primary font-arabic">قريب</span>
-      </div>
-      <div className="flex items-center gap-3">
-        <button className="p-2 text-gray-500 hover:bg-gray-100 rounded-full transition-colors">
-          <Search size={24} />
-        </button>
-        <button className="p-2 text-gray-500 hover:bg-gray-100 rounded-full transition-colors">
-          <Menu size={24} />
-        </button>
-      </div>
-    </header>
+    <View style={styles.header}>
+      <View style={styles.brandRow}>
+        <View style={styles.logoWrap}>
+          <View style={styles.logoInner} />
+        </View>
+        <Text style={styles.brandText}>قريب</Text>
+      </View>
+      <View style={styles.actionsRow}>
+        <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
+          <Ionicons name="search-outline" size={24} color="#64748b" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
+          <Ionicons name="menu-outline" size={24} color="#64748b" />
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  header: {
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    backgroundColor: '#ffffff',
+    borderBottomWidth: 1,
+    borderBottomColor: '#f1f5f9',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  brandRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  logoWrap: {
+    backgroundColor: '#e0f2f1',
+    padding: 8,
+    borderRadius: 12,
+  },
+  logoInner: {
+    width: 16,
+    height: 16,
+    backgroundColor: '#004d40',
+    borderRadius: 4,
+    transform: [{ rotate: '45deg' }],
+  },
+  brandText: {
+    fontSize: 22,
+    fontWeight: '800',
+    color: '#004d40',
+  },
+  actionsRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  iconButton: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#f8fafc',
+  },
+});
 
 export default Header;

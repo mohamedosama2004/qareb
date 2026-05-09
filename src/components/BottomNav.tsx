@@ -1,40 +1,44 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Home, Compass, Calendar, Info, User } from 'lucide-react';
+import { StyleSheet, Text, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 const BottomNav = () => {
   return (
-    <nav className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white border-t border-gray-100 flex items-center justify-around py-3 px-2 z-50 rounded-t-2xl shadow-[0_-4px_10px_rgba(0,0,0,0.05)]" dir="rtl">
-      <NavLink 
-        to="/" 
-        className={({ isActive }) => `bottom-nav-item ${isActive ? 'active' : ''}`}
-      >
-        <Home size={22} strokeWidth={isActive => isActive ? 2.5 : 2} />
-        <span className="text-[10px] font-medium">الرئيسية</span>
-      </NavLink>
-      <NavLink 
-        to="/discover" 
-        className={({ isActive }) => `bottom-nav-item ${isActive ? 'active' : ''}`}
-      >
-        <Compass size={22} strokeWidth={isActive => isActive ? 2.5 : 2} />
-        <span className="text-[10px] font-medium">الدروس</span>
-      </NavLink>
-      <NavLink 
-        to="/schedule" 
-        className={({ isActive }) => `bottom-nav-item ${isActive ? 'active' : ''}`}
-      >
-        <Calendar size={22} strokeWidth={isActive => isActive ? 2.5 : 2} />
-        <span className="text-[10px] font-medium">الجدول</span>
-      </NavLink>
-      <NavLink 
-        to="/about" 
-        className={({ isActive }) => `bottom-nav-item ${isActive ? 'active' : ''}`}
-      >
-        <Info size={22} strokeWidth={isActive => isActive ? 2.5 : 2} />
-        <span className="text-[10px] font-medium">عن المنصة</span>
-      </NavLink>
-    </nav>
+    <View style={styles.container}>
+      {[
+        { icon: 'home-outline', label: 'الرئيسية' },
+        { icon: 'compass-outline', label: 'الدروس' },
+        { icon: 'calendar-outline', label: 'الجدول' },
+        { icon: 'information-circle-outline', label: 'عن المنصة' },
+      ].map((item) => (
+        <View key={item.label} style={styles.item}>
+          <Ionicons name={item.icon as keyof typeof Ionicons.glyphMap} size={20} color="#94a3b8" />
+          <Text style={styles.label}>{item.label}</Text>
+        </View>
+      ))}
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    backgroundColor: '#ffffff',
+    borderTopWidth: 1,
+    borderTopColor: '#e2e8f0',
+    paddingVertical: 10,
+  },
+  item: {
+    alignItems: 'center',
+    gap: 4,
+  },
+  label: {
+    fontSize: 11,
+    color: '#94a3b8',
+    fontWeight: '600',
+  },
+});
 
 export default BottomNav;
